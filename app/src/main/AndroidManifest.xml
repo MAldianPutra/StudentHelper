@@ -19,6 +19,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Homework.MainActivity_Homework"
+            android:label="@string/title_activity_main__homework"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Class.MainActivity_Class"
+            android:label="@string/title_activity_main__class"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
