@@ -28,4 +28,8 @@ public class MainActivity_Class extends AppCompatActivity {
         });
     }
 
+    public void addClassClicked(View view){
+
+    }
+
 }
