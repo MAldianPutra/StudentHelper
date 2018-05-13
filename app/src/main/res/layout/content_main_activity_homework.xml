@@ -10,7 +10,7 @@
     tools:showIn="@layout/activity_main_homework">
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/homeworkName"
         android:layout_width="wrap_content"
         android:layout_height="45dp"
         android:layout_marginStart="36dp"
@@ -23,52 +23,53 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/classAssign"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Class"
         android:inputType="textPersonName"
         android:visibility="visible"
-        app:layout_constraintStart_toStartOf="@+id/editText"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintStart_toStartOf="@+id/homeworkName"
+        app:layout_constraintTop_toBottomOf="@+id/homeworkName" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/reminderDate"
         android:layout_width="wrap_content"
         android:layout_height="46dp"
         android:ems="10"
-        android:hint="Remainder"
+        android:hint="Reminder(dd/mm/yyyy)"
         android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="@+id/editText4"
-        app:layout_constraintTop_toBottomOf="@+id/editText4" />
+        app:layout_constraintStart_toStartOf="@+id/dateAssign"
+        app:layout_constraintTop_toBottomOf="@+id/dateAssign" />
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/dateAssign"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Deadline"
+        android:hint="Deadline(dd/mm/yyyy)"
         android:inputType="date"
-        app:layout_constraintStart_toStartOf="@+id/editText2"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+        app:layout_constraintStart_toStartOf="@+id/classAssign"
+        app:layout_constraintTop_toBottomOf="@+id/classAssign" />
 
     <EditText
-        android:id="@+id/editText5"
+        android:id="@+id/commentText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Comment"
         android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="@+id/editText3"
-        app:layout_constraintTop_toBottomOf="@+id/editText3" />
+        app:layout_constraintStart_toStartOf="@+id/reminderDate"
+        app:layout_constraintTop_toBottomOf="@+id/reminderDate" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/addHomework"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp"
         android:layout_marginStart="36dp"
+        android:onClick="addHomeworkClicked"
         android:text="Add Homework"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
