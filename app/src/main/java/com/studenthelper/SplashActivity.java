@@ -3,28 +3,16 @@ package com.studenthelper;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
-public class SplashActivity extends Activity {
+public class SplashActivity extends AppCompatActivity {
 
-    //Splash untuk pertama
+    //Splash
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash);
-
-        Thread thread = new Thread() {
-            public void run (){
-                try {
-                    sleep(5000);
-                } catch (InterruptedException e){
-                    e.printStackTrace();
-                } finally {
-                    startActivity(new Intent(SplashActivity.this, MainActivity.class));
-                    finish();
-                }
-            }
-        };
-        thread.start();
-
+        Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 }
