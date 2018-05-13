@@ -12,14 +12,15 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".SplashActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:theme="@style/AppTheme.NoActionBar">
         </activity>
+            <activity android:name=".SplashActivity">
+                <intent-filter>
+                    <action android:name="android.intent.action.MAIN" />
+
+                    <category android:name="android.intent.category.LAUNCHER" />
+                </intent-filter>
+            </activity>
         <activity
             android:name=".Homework.MainActivity_Homework"
             android:label="@string/title_activity_main__homework"
@@ -27,8 +28,7 @@
         <activity
             android:name=".Class.MainActivity_Class"
             android:label="@string/title_activity_main__class"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ShowClassActivity"></activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
