@@ -22,15 +22,11 @@
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="43dp"
+        android:layout_marginTop="164dp"
         android:text="Add Class"
-        tools:layout_editor_absoluteX="270dp"
-        tools:layout_editor_absoluteY="164dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
 
-<android.support.v7.widget.RecyclerView
-    android:id="@+id/class_list"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-</android.support.v7.widget.RecyclerView>
