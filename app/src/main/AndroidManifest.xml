@@ -29,7 +29,8 @@
         <activity
             android:name=".Class.MainActivity_Class"
             android:label="@string/title_activity_main__class"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
     </application>
 
 </manifest>
