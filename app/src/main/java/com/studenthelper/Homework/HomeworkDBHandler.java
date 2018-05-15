@@ -2,8 +2,12 @@ package com.studenthelper.Homework;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class HomeworkDBHandler extends SQLiteOpenHelper {
         private static final int DATABASE_VERSION = 1;
@@ -67,8 +71,88 @@ public class HomeworkDBHandler extends SQLiteOpenHelper {
         }
 
         //menampilkan hasil database
-        public String HomeworkDBToString(){
-            return null;
+        public String HomeworkDBToString() {
+            SQLiteDatabase db = getWritableDatabase();
+            String query = "SELECT * FROM " + TABLE_PRODUCTS;
+            StringBuffer buffer = new StringBuffer();
+            //Cursor point
+            Cursor cursor = db.rawQuery(query, null);
+            while (cursor.moveToNext()) {
+                int index1 = cursor.getColumnIndex(COLUMN_ID);
+                int index2 = cursor.getColumnIndex(COLUMN_NAME);
+                int index3 = cursor.getColumnIndex(COLUMN_CLASS);
+                int index4 = cursor.getColumnIndex(COLUMN_DEADLINE);
+                int index5 = cursor.getColumnIndex(COLUMN_REMINDER);
+                int index6 = cursor.getColumnIndex(COLUMN_COMMENT);
+
+                int cid = cursor.getInt(index1);
+                String name = cursor.getString(index2);
+                String classname = cursor.getString(index3);
+                String deadline = cursor.getString(index4);
+                String reminder = cursor.getString(index5);
+                String comment = cursor.getString(index6);
+                buffer.append(cid + " " + name + " " + classname + " "
+                        + deadline + " " + reminder + " " + comment + " ");
+            }
+            db.close();
+            return buffer.toString();
+        }
+
+
+        public BuildHomework getHomeworkRecord(String HomeworkName){
+            BuildHomework homework = null;
+            SQLiteDatabase db = getWritableDatabase();
+            String query = "SELECT * FROM " + TABLE_PRODUCTS +
+                    " WHERE " + COLUMN_NAME + " IS " + HomeworkName;
+            StringBuffer buffer = new StringBuffer();
+            //Cursor point
+            Cursor cursor = db.rawQuery(query, null);
+            while(cursor.moveToNext()){
+                int index1 = cursor.getColumnIndex(COLUMN_ID);
+                int index2 = cursor.getColumnIndex(COLUMN_NAME);
+                int index3 = cursor.getColumnIndex(COLUMN_CLASS);
+                int index4 = cursor.getColumnIndex(COLUMN_DEADLINE);
+                int index5 = cursor.getColumnIndex(COLUMN_REMINDER);
+                int index6 = cursor.getColumnIndex(COLUMN_COMMENT);
+
+                int cid = cursor.getInt(index1);
+                String name = cursor.getString(index2);
+                String classname = cursor.getString(index3);
+                String deadline = cursor.getString(index4);
+                String reminder = cursor.getString(index5);
+                String comment = cursor.getString(index6);
+                homework = new BuildHomework(name, classname, deadline, reminder, comment);
+            }
+            db.close();
+            cursor.close();
+            return homework;
+        }
+
+        public List<BuildHomework> getAllHomework(){
+            List<BuildHomework> list = new ArrayList<>();
+            String query = "SELECT * FROM " + TABLE_PRODUCTS;
+            SQLiteDatabase db = getWritableDatabase();
+            Cursor cursor = db.rawQuery(query, null);
+            while(cursor.moveToNext()){
+                int index1 = cursor.getColumnIndex(COLUMN_ID);
+                int index2 = cursor.getColumnIndex(COLUMN_NAME);
+                int index3 = cursor.getColumnIndex(COLUMN_CLASS);
+                int index4 = cursor.getColumnIndex(COLUMN_DEADLINE);
+                int index5 = cursor.getColumnIndex(COLUMN_REMINDER);
+                int index6 = cursor.getColumnIndex(COLUMN_COMMENT);
+
+                int cid = cursor.getInt(index1);
+                String name = cursor.getString(index2);
+                String classname = cursor.getString(index3);
+                String deadline = cursor.getString(index4);
+                String reminder = cursor.getString(index5);
+                String comment = cursor.getString(index6);
+                BuildHomework homework = new BuildHomework(name, classname, deadline, reminder, comment);
+                list.add(homework);
+            }
+            db.close();
+            cursor.close();
+            return list;
         }
 
 

@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -15,11 +18,22 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.LinearLayout;
 
+import com.studenthelper.Class.ClassDBHandler;
 import com.studenthelper.Class.MainActivity_Class;
+import com.studenthelper.Homework.BuildHomework;
+import com.studenthelper.Homework.HomeworkDBHandler;
 import com.studenthelper.Homework.MainActivity_Homework;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    //RecyclerView classRecyclerView;
+    RecyclerView homeworkRecyclerView;
+    //RecyclerView.Adapter
+    HomeworkDBHandler homeworkDBHandler;
+    ClassDBHandler classDBHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +59,21 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        //List<BuildHomework> homeworkList = homeworkDBHandler.getAllHomework();
+        homeworkDBHandler = new HomeworkDBHandler(this, null, null, 1);
+        /*
+        classRecyclerView = (RecyclerView) findViewById(R.id.Kelas_list);
+        classRecyclerView.setHasFixedSize(true);
+        classRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        classRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        */
+        //classRecyclerView.setAdapter(new );
+        homeworkRecyclerView = (RecyclerView) findViewById(R.id.HomeWork_list);
+        homeworkRecyclerView.setHasFixedSize(true);
+        homeworkRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        homeworkRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        homeworkRecyclerView.setAdapter(new HomeworkAdapter(homeworkDBHandler.getAllHomework(), R.layout.homework_list));
     }
 
     @Override
