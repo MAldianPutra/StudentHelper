@@ -1,5 +1,6 @@
 package com.studenthelper.Homework;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.studenthelper.MainActivity;
 import com.studenthelper.R;
 
 public class MainActivity_Homework extends AppCompatActivity {
@@ -61,6 +63,7 @@ public class MainActivity_Homework extends AppCompatActivity {
 
         BuildHomework newHomework = new BuildHomework(hwName, className, deadlineDt, reminderDt, commentTxt);
         dbHandler.addHomework(newHomework);
+        startActivity(new Intent(MainActivity_Homework.this, MainActivity.class));
     }
     public void checkIfEmpty(EditText fieldChecked){
         if(fieldChecked.getText().length()==0){

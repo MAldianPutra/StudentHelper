@@ -30,10 +30,12 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     //RecyclerView classRecyclerView;
+    //RecyclerView.Adapter classAdapter;
+    //ClassDBHandler classDBHandler;
     RecyclerView homeworkRecyclerView;
-    //RecyclerView.Adapter
+    RecyclerView.Adapter homeworkAdapter;
     HomeworkDBHandler homeworkDBHandler;
-    ClassDBHandler classDBHandler;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,8 +62,11 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        //List<BuildHomework> homeworkList = homeworkDBHandler.getAllHomework();
+        //Initialize database
         homeworkDBHandler = new HomeworkDBHandler(this, null, null, 1);
+
+        //Initialize adapter
+        homeworkAdapter = new HomeworkAdapter(homeworkDBHandler.getAllHomework(), R.layout.homework_list);
         /*
         classRecyclerView = (RecyclerView) findViewById(R.id.Kelas_list);
         classRecyclerView.setHasFixedSize(true);
@@ -73,7 +78,7 @@ public class MainActivity extends AppCompatActivity
         homeworkRecyclerView.setHasFixedSize(true);
         homeworkRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         homeworkRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        homeworkRecyclerView.setAdapter(new HomeworkAdapter(homeworkDBHandler.getAllHomework(), R.layout.homework_list));
+        homeworkRecyclerView.setAdapter(homeworkAdapter);
     }
 
     @Override

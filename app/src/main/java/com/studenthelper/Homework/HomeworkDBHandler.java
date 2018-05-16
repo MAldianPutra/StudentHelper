@@ -45,23 +45,15 @@ public class HomeworkDBHandler extends SQLiteOpenHelper {
         }
 
         public void addHomework(BuildHomework homework){
-            ContentValues nameValues = new ContentValues();
-            nameValues.put(COLUMN_NAME, homework.getName());
-            ContentValues classValues = new ContentValues();
-            classValues.put(COLUMN_CLASS, homework.getClassName());
-            ContentValues deadlineDate = new ContentValues();
-            deadlineDate.put(COLUMN_DEADLINE, homework.getDeadlineDate());
-            ContentValues reminderDate = new ContentValues();
-            reminderDate.put(COLUMN_REMINDER, homework.getReminderDate());
-            ContentValues comment = new ContentValues();
-            comment.put(COLUMN_COMMENT, homework.getCommentText());
+            ContentValues Values = new ContentValues();
+            Values.put(COLUMN_NAME, homework.getName());
+            Values.put(COLUMN_CLASS, homework.getClassName());
+            Values.put(COLUMN_DEADLINE, homework.getDeadlineDate());
+            Values.put(COLUMN_REMINDER, homework.getReminderDate());
+            Values.put(COLUMN_COMMENT, homework.getCommentText());
 
             SQLiteDatabase db = getWritableDatabase();
-            db.insert(TABLE_PRODUCTS, null, nameValues);
-            db.insert(TABLE_PRODUCTS, null, classValues);
-            db.insert(TABLE_PRODUCTS, null, deadlineDate);
-            db.insert(TABLE_PRODUCTS, null, reminderDate);
-            db.insert(TABLE_PRODUCTS, null, comment);
+            db.insert(TABLE_PRODUCTS, null, Values);
             db.close();
         }
 
