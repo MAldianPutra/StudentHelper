@@ -7,8 +7,9 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 
 import com.studenthelper.MainActivity;
 import com.studenthelper.R;
@@ -18,9 +19,11 @@ public class MainActivity_Homework extends AppCompatActivity {
     EditText classAssign;
     EditText deadlineDate;
     EditText reminderDate;
-    EditText commentText;
+    RadioGroup statusGroup;
+    RadioButton radioButton;
     HomeworkDBHandler dbHandler;
     String calendarData;
+    String radioText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,12 +31,12 @@ public class MainActivity_Homework extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //TextField
+        //xml
         homeworkName = (EditText) findViewById(R.id.homeworkName);
         classAssign = (EditText) findViewById(R.id.classAssign);
         deadlineDate = (EditText) findViewById(R.id.dateAssign);
         reminderDate = (EditText) findViewById(R.id.reminderDate);
-        commentText = (EditText) findViewById(R.id.commentText);
+        statusGroup = (RadioGroup) findViewById(R.id.statusGroup);
 
         //Create Database
         dbHandler = new HomeworkDBHandler(this, null, null, 1);
@@ -46,13 +49,17 @@ public class MainActivity_Homework extends AppCompatActivity {
             }
         });
     }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         calendarData = data.getStringExtra("date");
     }
 
+    public void checkButton(View view){
+        int radioId = statusGroup.getCheckedRadioButtonId();
+        radioButton = findViewById(radioId);
+        radioText = radioButton.getText().toString();
+    }
     public void deadlineClicked(View view){
         Intent intent = new Intent(MainActivity_Homework.this, CalendarActivity_Homework.class);
         startActivityForResult(intent, 1000);
@@ -69,13 +76,15 @@ public class MainActivity_Homework extends AppCompatActivity {
         String className = classAssign.getText().toString();
         String deadlineDt = deadlineDate.getText().toString();
         String reminderDt = reminderDate.getText().toString();
-        String commentTxt = commentText.getText().toString();
+        String commentTxt = radioText;
 
         checkIfEmpty(homeworkName);
         checkIfEmpty(classAssign);
         checkIfEmpty(deadlineDate);
         checkIfEmpty(reminderDate);
-        checkIfEmpty(commentText);
+        if (commentTxt == null){
+            commentTxt = "Not Yet";
+        }
 
         BuildHomework newHomework = new BuildHomework(hwName, className, deadlineDt, reminderDt, commentTxt);
         dbHandler.addHomework(newHomework);

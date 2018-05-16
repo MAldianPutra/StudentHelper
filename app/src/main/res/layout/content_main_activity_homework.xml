@@ -12,7 +12,7 @@
     <EditText
         android:id="@+id/homeworkName"
         android:layout_width="wrap_content"
-        android:layout_height="45dp"
+        android:layout_height="46dp"
         android:layout_marginStart="36dp"
         android:layout_marginTop="80dp"
         android:ems="10"
@@ -37,10 +37,10 @@
         android:id="@+id/reminderDate"
         android:layout_width="wrap_content"
         android:layout_height="46dp"
+        android:editable="false"
         android:ems="10"
         android:hint="Reminder(dd/mm/yyyy)"
         android:onClick="reminderClicked"
-        android:editable="false"
         app:layout_constraintStart_toStartOf="@+id/dateAssign"
         app:layout_constraintTop_toBottomOf="@+id/dateAssign" />
 
@@ -48,22 +48,12 @@
         android:id="@+id/dateAssign"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:editable="false"
         android:ems="10"
         android:hint="Deadline(dd/mm/yyyy)"
         android:onClick="deadlineClicked"
-        android:editable="false"
         app:layout_constraintStart_toStartOf="@+id/classAssign"
         app:layout_constraintTop_toBottomOf="@+id/classAssign" />
-
-    <EditText
-        android:id="@+id/commentText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Comment"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="@+id/reminderDate"
-        app:layout_constraintTop_toBottomOf="@+id/reminderDate" />
 
     <Button
         android:id="@+id/addHomework"
@@ -75,5 +65,41 @@
         android:text="Add Homework"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/statusGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/reminderDate"
+        app:layout_constraintTop_toBottomOf="@+id/reminderDate">
+
+        <RadioButton
+            android:id="@+id/notyet"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Not Yet"
+            android:onClick="checkButton"
+            app:layout_constraintStart_toStartOf="@+id/radioGroup"
+            app:layout_constraintTop_toBottomOf="@+id/reminderDate" />
+
+        <RadioButton
+            android:id="@+id/onprogress"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="On Progress"
+            android:onClick="checkButton"
+            app:layout_constraintStart_toStartOf="@+id/radioGroup"
+            app:layout_constraintTop_toBottomOf="@+id/radioButton" />
+
+        <RadioButton
+            android:id="@+id/completed"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Completed"
+            android:onClick="checkButton"
+            app:layout_constraintStart_toStartOf="@+id/radioGroup"
+            app:layout_constraintTop_toBottomOf="@+id/radioButton3" />
+    </RadioGroup>
+
 
 </android.support.constraint.ConstraintLayout>
