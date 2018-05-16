@@ -19,9 +19,8 @@ public class MainActivity_Homework extends AppCompatActivity {
     EditText deadlineDate;
     EditText reminderDate;
     EditText commentText;
-    Button addHomework;
     HomeworkDBHandler dbHandler;
-
+    String calendarData;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +47,23 @@ public class MainActivity_Homework extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        calendarData = data.getStringExtra("date");
+    }
+
+    public void deadlineClicked(View view){
+        Intent intent = new Intent(MainActivity_Homework.this, CalendarActivity_Homework.class);
+        startActivityForResult(intent, 1000);
+        deadlineDate.setText(calendarData);
+    }
+
+    public void reminderClicked(View view){
+        Intent intent = new Intent(MainActivity_Homework.this, CalendarActivity_Homework.class);
+        startActivityForResult(intent, 1000);
+        reminderDate.setText(calendarData);
+    }
     public void addHomeworkClicked(View view){
         String hwName = homeworkName.getText().toString();
         String className = classAssign.getText().toString();

@@ -39,7 +39,8 @@
         android:layout_height="46dp"
         android:ems="10"
         android:hint="Reminder(dd/mm/yyyy)"
-        android:inputType="textPersonName"
+        android:onClick="reminderClicked"
+        android:editable="false"
         app:layout_constraintStart_toStartOf="@+id/dateAssign"
         app:layout_constraintTop_toBottomOf="@+id/dateAssign" />
 
@@ -49,7 +50,8 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Deadline(dd/mm/yyyy)"
-        android:inputType="date"
+        android:onClick="deadlineClicked"
+        android:editable="false"
         app:layout_constraintStart_toStartOf="@+id/classAssign"
         app:layout_constraintTop_toBottomOf="@+id/classAssign" />
 
