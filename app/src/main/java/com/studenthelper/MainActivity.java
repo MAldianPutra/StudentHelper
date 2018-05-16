@@ -29,9 +29,9 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    //RecyclerView classRecyclerView;
-    //RecyclerView.Adapter classAdapter;
-    //ClassDBHandler classDBHandler;
+    RecyclerView classRecyclerView;
+    RecyclerView.Adapter classAdapter;
+    ClassDBHandler classDBHandler;
     RecyclerView homeworkRecyclerView;
     RecyclerView.Adapter homeworkAdapter;
     HomeworkDBHandler homeworkDBHandler;
@@ -64,16 +64,17 @@ public class MainActivity extends AppCompatActivity
 
         //Initialize database
         homeworkDBHandler = new HomeworkDBHandler(this, null, null, 1);
-
+        classDBHandler = new ClassDBHandler(this,null,null,1);
         //Initialize adapter
         homeworkAdapter = new HomeworkAdapter(homeworkDBHandler.getAllHomework(), R.layout.homework_list);
-        /*
+        //classAdapter = new ClassAdapter(classDBHandler.getAllClass(), layout);
+
         classRecyclerView = (RecyclerView) findViewById(R.id.Kelas_list);
         classRecyclerView.setHasFixedSize(true);
         classRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         classRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        */
         //classRecyclerView.setAdapter(new );
+
         homeworkRecyclerView = (RecyclerView) findViewById(R.id.HomeWork_list);
         homeworkRecyclerView.setHasFixedSize(true);
         homeworkRecyclerView.setLayoutManager(new LinearLayoutManager(this));

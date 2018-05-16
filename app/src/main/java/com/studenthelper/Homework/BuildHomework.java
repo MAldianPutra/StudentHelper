@@ -15,8 +15,6 @@ public class BuildHomework {
         this.commentText = commentText;
     }
 
-
-
     public String getName() {
         return name;
     }
