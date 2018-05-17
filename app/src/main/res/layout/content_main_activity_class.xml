@@ -4,54 +4,79 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".Class.MainActivity_Class"
-    tools:layout_editor_absoluteY="137dp"
+    tools:layout_editor_absoluteY="81dp"
     tools:showIn="@layout/activity_main_class">
 
-    <EditText
-        android:id="@+id/className"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="285dp"
+        android:layout_height="0dp"
+        android:alpha="0.8"
+        android:background="#FFFFFF"
+        android:layout_marginBottom="134dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="30dp"
-        android:ems="10"
-        android:hint="Class Name"
-        android:inputType="textPersonName"
+        android:layout_marginTop="27dp"
+        app:layout_constraintBottom_toTopOf="@+id/addBtn"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <EditText
-        android:id="@+id/lecturerName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:ems="10"
-        android:hint="Lecturer Name"
-        android:inputType="textPersonName"
-        android:visibility="visible"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/className" />
-    <EditText
-        android:id="@+id/dateTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Date"
-        android:editable="false"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="@+id/lecturerName"
-        app:layout_constraintTop_toBottomOf="@+id/lecturerName" />
+        <EditText
+            android:id="@+id/className"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:ems="10"
+            android:hint="Class Name"
+            android:inputType="textPersonName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/commentText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Comment"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="@+id/dateTime"
-        app:layout_constraintTop_toBottomOf="@+id/dateTime" />
+        <EditText
+            android:id="@+id/lecturerName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="79dp"
+            android:ems="10"
+            android:hint="Lecturer Name"
+            android:inputType="textPersonName"
+            android:visibility="visible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/className" />
+
+        <EditText
+            android:id="@+id/dateTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="70dp"
+            android:editable="false"
+            android:ems="10"
+            android:hint="Date"
+            android:inputType="textPersonName"
+            app:layout_constraintStart_toStartOf="@+id/lecturerName"
+            app:layout_constraintTop_toBottomOf="@+id/lecturerName" />
+
+        <EditText
+            android:id="@+id/commentText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="13dp"
+            android:ems="10"
+            android:hint="Comment"
+            android:inputType="textPersonName"
+            app:layout_constraintStart_toStartOf="@+id/dateTime"
+            app:layout_constraintTop_toBottomOf="@+id/dateTime" />
+    </RelativeLayout>
 
     <Button
         android:id="@+id/addBtn"
@@ -62,8 +87,8 @@
         android:onClick="addClassClicked"
         android:text="Add Class"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
 
 
 </android.support.constraint.ConstraintLayout>
