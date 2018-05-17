@@ -2,6 +2,7 @@ package com.studenthelper;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -22,7 +23,8 @@ public class ClassAdapter extends RecyclerView.Adapter<ClassAdapter.ViewHolder> 
     @NonNull
     @Override
     public ClassAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+        View v = LayoutInflater.from(parent.getContext()).inflate(itemLayout, parent, false);
+        return new ViewHolder(v);
     }
 
     @Override
@@ -47,6 +49,10 @@ public class ClassAdapter extends RecyclerView.Adapter<ClassAdapter.ViewHolder> 
 
         public ViewHolder(View itemView) {
             super(itemView);
+            className = (TextView) itemView.findViewById(R.id.className);
+            lecturerName = (TextView) itemView.findViewById(R.id.lecturerName);
+            dayDate = (TextView) itemView.findViewById(R.id.dayDate);
+            comment = (TextView) (TextView) itemView.findViewById(R.id.comment);
 
         }
     }

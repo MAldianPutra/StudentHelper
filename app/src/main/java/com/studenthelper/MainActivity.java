@@ -67,13 +67,13 @@ public class MainActivity extends AppCompatActivity
         classDBHandler = new ClassDBHandler(this,null,null,1);
         //Initialize adapter
         homeworkAdapter = new HomeworkAdapter(homeworkDBHandler.getAllHomework(), R.layout.homework_list);
-        //classAdapter = new ClassAdapter(classDBHandler.getAllClass(), layout);
+        classAdapter = new ClassAdapter(classDBHandler.getAllClass(), R.layout.class_list);
 
         classRecyclerView = (RecyclerView) findViewById(R.id.Kelas_list);
         classRecyclerView.setHasFixedSize(true);
         classRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         classRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        //classRecyclerView.setAdapter(new );
+        classRecyclerView.setAdapter(classAdapter);
 
         homeworkRecyclerView = (RecyclerView) findViewById(R.id.HomeWork_list);
         homeworkRecyclerView.setHasFixedSize(true);

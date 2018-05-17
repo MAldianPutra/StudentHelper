@@ -83,4 +83,17 @@ public class ClassDBHandler extends SQLiteOpenHelper {
         cursor.close();
         return list;
     }
+
+    public ArrayList<String> getClassName(){
+        ArrayList<String> list = new ArrayList<>();
+        String query = "SELECT * FROM " + TABLE_PRODUCTS;
+        SQLiteDatabase db = getWritableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+        while (cursor.moveToNext()){
+            int index1 = cursor.getColumnIndex(COLUMN_NAME);
+            String className = cursor.getString(index1);
+            list.add(className);
+        }
+        return list;
+    }
 }
